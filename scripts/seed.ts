@@ -1,17 +1,20 @@
-import "dotenv/config";
+import "dotenv-flow/config";
 import { Client } from "pg";
 import { faker } from "@faker-js/faker";
 
 (async () => {
   const client = new Client({
-    user: process.env.PGUSER,
-    password: process.env.PGPASSWORD,
-    host: process.env.PGHOST,
-    database: process.env.PGDATABASE,
-    port: Number(process.env.PGPORT),
+    user: process.env.PG_USER,
+    password: process.env.PG_PASSWORD,
+    host: process.env.PG_HOST,
+    database: process.env.PG_DATABASE_NAME,
+    port: Number(process.env.PG_PORT),
   });
-  await client.connect();
+
+  console.log("Connecting to database...");
   try {
+    await client.connect();
+    console.log("Connected to database");
     for (const _iterator of Array.from({ length: 500 })) {
       await client.query(
         "INSERT INTO users (name, email, password) VALUES ($1, $2, $3)",
@@ -29,8 +32,9 @@ import { faker } from "@faker-js/faker";
     if (rows[0].count !== "500") {
       throw new Error("Expected 500 users");
     }
+    await client.end();
   } catch (error) {
     console.error(error);
+    await client.end();
   }
-  await client.end();
 })();
