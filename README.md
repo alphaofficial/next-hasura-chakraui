@@ -1,6 +1,6 @@
-# Next JS + Tailwind + GraphQL + React Query + TypeScript templatae
+# Next JS + ChakraUI + GraphQL + React Query + TypeScript templatae
 
-This is a template for Next.js + Tailwind + GraphQL + React Query + TypeScript.
+This is a template for Next.js + ChakraUI + GraphQL + React Query + TypeScript.
 It supports SSR via React Query Hydrate.
 
 ## Getting Started
