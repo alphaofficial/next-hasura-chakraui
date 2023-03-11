@@ -9,11 +9,15 @@
     "lint": "next lint",
     "format": "npx prettier --write --ignore-unknown 'src/**/*'",
     "generate": "graphql-codegen  --require dotenv-flow/config --config codegen.ts dotenv_config_path=./.env.local && npm run format",
-    "seed": "npx ts-node --project tsconfig.seed.json scripts/seed.ts",
+    "seed": "npx ts-node --project tsconfig.tsnode.json scripts/seed.ts",
+    "generate:entities": "npx ts-node --project tsconfig.tsnode.json scripts/generate-entities.ts",
     "test:watch": "jest --watch",
     "test": "jest --forceExit",
     "test:ci": "jest --ci",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "migrations:create": "npx mikro-orm migration:create",
+    "migrations:up": "npx mikro-orm migration:up",
+    "migrations:down": "npx mikro-orm migration:down"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.5.1",
@@ -22,6 +26,8 @@
     "@fontsource/mulish": "^4.5.14",
     "@headlessui/react": "^1.7.13",
     "@heroicons/react": "^2.0.16",
+    "@mikro-orm/core": "^5.6.13",
+    "@mikro-orm/postgresql": "^5.6.13",
     "@tanstack/react-query": "^4.26.1",
     "@tanstack/react-query-devtools": "^4.26.1",
     "@types/node": "18.14.6",
@@ -47,6 +53,9 @@
     "@graphql-codegen/typescript-operations": "^3.0.2",
     "@graphql-codegen/typescript-react-apollo": "^3.3.7",
     "@graphql-codegen/typescript-react-query": "^4.1.0",
+    "@mikro-orm/cli": "^5.6.13",
+    "@mikro-orm/entity-generator": "^5.6.13",
+    "@mikro-orm/reflection": "^5.6.13",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
@@ -71,6 +80,12 @@
     "*.{js,jsx,ts,tsx}": [
       "eslint --fix",
       "npm run format"
+    ]
+  },
+  "mikro-orm": {
+    "useTsNode": true,
+    "configPaths": [
+      "./mikro-orm.config.ts"
     ]
   }
 }
