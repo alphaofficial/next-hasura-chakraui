@@ -1,4 +1,4 @@
-import maskEmail from "@/utils/maskEmail";
+import maskEmail from "@/utils/mask-email";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 export type Data = {

@@ -1,5 +1,5 @@
 import { render } from "@/utils/test-utils";
-import Home from "@/pages/index";
+import Home from ".";
 
 const renderPage = () => render(<Home />);
 describe("Home page", () => {

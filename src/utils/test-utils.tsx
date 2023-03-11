@@ -7,6 +7,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
+import { ChakraProvider } from "@chakra-ui/react";
 
 const user = userEvent.setup();
 const queryClient = new QueryClient();
@@ -15,7 +16,9 @@ const AllTheProviders: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   return (
     <QueryClientProvider client={queryClient}>
-      <Hydrate state={{}}>{children}</Hydrate>
+      <Hydrate state={{}}>
+        <ChakraProvider>{children}</ChakraProvider>
+      </Hydrate>
     </QueryClientProvider>
   );
 };
