@@ -1,0 +1,7 @@
+query Users($limit: Int, $offset: Int) {
+  users(limit: $limit, offset: $offset) {
+    id
+    name
+    email
+  }
+}
