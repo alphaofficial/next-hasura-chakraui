@@ -1,0 +1,37 @@
+table:
+  name: users
+  schema: public
+insert_permissions:
+  - role: client
+    permission:
+      check: {}
+      columns:
+        - dob
+        - email
+        - name
+        - password
+select_permissions:
+  - role: client
+    permission:
+      columns:
+        - id
+        - dob
+        - email
+        - name
+        - password
+        - last_login
+      filter: {}
+update_permissions:
+  - role: client
+    permission:
+      columns:
+        - dob
+        - email
+        - name
+        - password
+      filter: {}
+      check: null
+delete_permissions:
+  - role: client
+    permission:
+      filter: {}

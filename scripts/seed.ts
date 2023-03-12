@@ -1,4 +1,4 @@
-import "dotenv-flow/config";
+import "dotenv/config";
 import { Client } from "pg";
 import { faker } from "@faker-js/faker";
 

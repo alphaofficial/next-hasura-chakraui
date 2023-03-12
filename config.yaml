@@ -1,0 +1,3 @@
+version: 3
+endpoint: ${HASURA_ENDPOINT}
+metadata_directory: metadata

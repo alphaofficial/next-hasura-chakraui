@@ -1,0 +1,24 @@
+actions:
+  - name: login
+    definition:
+      kind: synchronous
+      handler: '{{WEBHOOK_BASE_URL}}/login'
+      forward_client_headers: true
+      headers:
+        - name: x-hasura-client
+          value: default
+        - name: x-client-secret
+          value: secret
+  - name: register
+    definition:
+      kind: synchronous
+      handler: '{{WEBHOOK_BASE_URL}}/register'
+      forward_client_headers: true
+custom_types:
+  enums: []
+  input_objects:
+    - name: UserRegisterInput
+  objects:
+    - name: LoginResponse
+    - name: RegisterResponse
+  scalars: []

@@ -13,6 +13,20 @@ npm install
 
 ### Development
 
+Start docker-compose to run hasura and postgres
+
+```bash
+docker-compose up -d
+```
+
+Launch the console
+
+```bash
+npx hasura console
+```
+
+Generate graphql types and start the dev server
+
 ```bash
 npm run dev
 ```

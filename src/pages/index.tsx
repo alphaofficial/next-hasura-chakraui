@@ -28,11 +28,11 @@ export default function Home() {
 
   return (
     <PageLayout>
-      <Box p={8}>
-        <Box>
+      <Stack direction="column" p={8} gap={4}>
+        <Stack direction="column" gap={2}>
           <Heading aria-label="heading">Hello graphql!</Heading>
           <Text>Welcome to this page. </Text>
-        </Box>
+        </Stack>
         <Stack direction="column" gap={2}>
           {data?.users.map((user) => (
             <Box key={user.id}>
@@ -40,7 +40,7 @@ export default function Home() {
             </Box>
           ))}
         </Stack>
-      </Box>
+      </Stack>
     </PageLayout>
   );
 }
