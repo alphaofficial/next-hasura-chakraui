@@ -10,7 +10,7 @@
     "lint": "next lint",
     "format": "npx prettier --write --ignore-unknown 'src/**/*'",
     "generate": "graphql-codegen  --require dotenv/config --config codegen.ts && npm run format",
-    "seed": "npx ts-node --project tsconfig.seed.json scripts/seed.ts",
+    "seed": "npx ts-node --project tsconfig.tsnode.json scripts/seed.ts",
     "test:watch": "jest --watch",
     "test": "jest --forceExit",
     "test:ci": "jest --ci",
