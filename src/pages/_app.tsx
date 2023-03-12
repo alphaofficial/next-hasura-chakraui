@@ -10,7 +10,6 @@ import {
 } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ChakraProvider } from "@chakra-ui/react";
-import "@/styles/globals.css";
 import theme from "@/theme";
 
 export default function App({ Component, pageProps }: AppProps) {
