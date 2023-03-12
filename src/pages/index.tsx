@@ -34,7 +34,7 @@ export default function Home() {
   return (
     <PageLayout>
       <Flex justifyContent="flex-end">
-        <Stack direction="row" p={2} gap={4}>
+        <Stack direction="row" p={2} gap={4} aria-label="authActions">
           <a href="/api/auth/login">Login</a>
           <a href="/api/auth/logout">Logout</a>
         </Stack>
@@ -43,13 +43,15 @@ export default function Home() {
         <Stack direction="column" gap={2}>
           <Heading aria-label="heading">Hello graphql!</Heading>
           <Text>Welcome to this page. </Text>
-          {!user && <Text>Log in to see your followers.</Text>}
+          {!user && (
+            <Text aria-label="loginText">Log in to see your followers.</Text>
+          )}
         </Stack>
         <Stack direction="column" gap={2}>
           {user && (
             <>
               <Box>
-                <Text>{user.name}</Text>
+                <Text aria-label="authUser">{user.name}</Text>
               </Box>
               <Box>
                 <Image src={user.picture || ""} alt={user.name || ""} />

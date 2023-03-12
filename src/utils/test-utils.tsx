@@ -8,6 +8,7 @@ import {
   QueryClientProvider,
 } from "@tanstack/react-query";
 import { ChakraProvider } from "@chakra-ui/react";
+import { UserProvider } from "@auth0/nextjs-auth0/client";
 
 const user = userEvent.setup();
 const queryClient = new QueryClient();
@@ -17,7 +18,9 @@ const AllTheProviders: React.FC<{ children: React.ReactNode }> = ({
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={{}}>
-        <ChakraProvider>{children}</ChakraProvider>
+        <UserProvider>
+          <ChakraProvider>{children}</ChakraProvider>
+        </UserProvider>
       </Hydrate>
     </QueryClientProvider>
   );
