@@ -2,7 +2,7 @@ actions:
   - name: login
     definition:
       kind: synchronous
-      handler: '{{WEBHOOK_BASE_URL}}/login'
+      handler: '{{WEBHOOK_BASE_URL}}/webhooks/login'
       forward_client_headers: true
       headers:
         - name: x-hasura-client
@@ -12,7 +12,7 @@ actions:
   - name: register
     definition:
       kind: synchronous
-      handler: '{{WEBHOOK_BASE_URL}}/register'
+      handler: '{{WEBHOOK_BASE_URL}}/webhooks/register'
       forward_client_headers: true
 custom_types:
   enums: []

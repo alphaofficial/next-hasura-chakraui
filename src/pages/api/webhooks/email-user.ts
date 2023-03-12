@@ -1,15 +1,16 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { handleUserEmail } from "@/api-handlers/user";
 import type { NextApiRequest, NextApiResponse } from "next";
+import validateRoute from "@/api-handlers/validate";
 
-// this webhook is triggered when a user is created
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  switch (req.method) {
-    case "POST":
-      return handleUserEmail(req, res);
-    case "GET":
-      return res.status(405).end();
-    default:
-      return res.status(405).end();
+/**
+ * This is the handler for the /api/webhooks/email-user route.
+ */
+export default validateRoute(function emailUserHandler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  if (req.method === "POST") {
+    return handleUserEmail(req, res);
   }
-}
+  return res.status(405).end();
+});

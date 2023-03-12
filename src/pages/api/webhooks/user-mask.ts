@@ -1,18 +1,17 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { handleUserMask, MaskUserPayload } from "@/api-handlers/user";
+import validateRoute from "@/api-handlers/validate";
 import type { NextApiRequest, NextApiResponse } from "next";
 
-// this webhook is triggered before the user is created
-export default function handler(
+/**
+ * This is the handler for the user-mask webhook.
+ */
+export default validateRoute(function handler(
   req: NextApiRequest,
   res: NextApiResponse<MaskUserPayload>
 ) {
-  switch (req.method) {
-    case "POST":
-      return handleUserMask(req, res);
-    case "GET":
-      return res.status(405).end();
-    default:
-      return res.status(405).end();
+  if (req.method === "POST") {
+    return handleUserMask(req, res);
   }
-}
+  return res.status(405).end();
+});
