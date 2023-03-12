@@ -13,22 +13,10 @@ npm install
 
 ### Development
 
-Start docker-compose to run hasura and postgres
+This will start the docker container for hasura and postgres, launch the console and start the app
 
 ```bash
-docker-compose up -d
-```
-
-Launch the console
-
-```bash
-npx hasura console
-```
-
-Generate graphql types and start the dev server
-
-```bash
-npm run dev
+npm run start:dev
 ```
 
 ### Production
@@ -38,13 +26,11 @@ npm run build
 npm run start
 ```
 
-## Local development
+## Other
 
-### Setting hasura actions url loa
+### Setting hasura actions url locally **(optional)**
 
 Open a tunnel using ngrok or cloudflare to the running app and add the https host to hasura
 You can add this from the admin dashboard or from env
 
-## Event and Action triggers
-
-There are webhooks triggers for events and actions. these should be added to the hasura console
+## Applying migrations and metadata to fresh db
