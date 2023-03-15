@@ -1,7 +1,11 @@
 import type { CodegenConfig } from "@graphql-codegen/cli";
 
-const { NEXT_PUBLIC_HASURA_GRAPHQL_URL, HASURA_GRAPHQL_ADMIN_SECRET } =
-  process.env;
+const {
+  NEXT_PUBLIC_HASURA_GRAPHQL_URL,
+  HASURA_GRAPHQL_ADMIN_SECRET,
+  NEXT_PUBLIC_HASURA_GRAPHQL_PROXY,
+  NEXT_PUBLIC_CLIENT_ID,
+} = process.env;
 
 const config: CodegenConfig = {
   overwrite: true,
@@ -39,11 +43,11 @@ const config: CodegenConfig = {
         exposeMutationKeys: true, // We use it as the key for the react query without having to manually give a string.
         exposeFetcher: true, // exposes a fetch to use for SSR,
         fetcher: {
-          endpoint: NEXT_PUBLIC_HASURA_GRAPHQL_URL!,
+          endpoint: NEXT_PUBLIC_HASURA_GRAPHQL_PROXY,
           fetchParams: {
             headers: {
               "Content-Type": "application/json",
-              "x-hasura-admin-secret": HASURA_GRAPHQL_ADMIN_SECRET!,
+              "x-client-id": NEXT_PUBLIC_CLIENT_ID,
             },
           },
         },
