@@ -1,16 +1,10 @@
 import { hashPassword } from "@/api-handlers/auth";
-import validateRoute from "@/api-handlers/validate";
-import type { NextApiRequest, NextApiResponse } from "next";
+import validateRoute from "@/api-helpers/validate";
+import handler from "@/api-helpers/handler";
 
 /**
  * This is the login handler for the login route.
  */
-export default validateRoute(function loginHandler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  if (req.method === "POST") {
-    return hashPassword(req, res);
-  }
-  return res.status(405).end();
-});
+const handleLogin = handler.post(validateRoute(hashPassword));
+
+export default handleLogin;
