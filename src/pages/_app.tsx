@@ -11,7 +11,7 @@ import {
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ChakraProvider } from "@chakra-ui/react";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
-import theme from "@/theme";
+import theme from "@/client/theme";
 
 export default function App({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());

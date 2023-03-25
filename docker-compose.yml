@@ -1,16 +1,16 @@
-version: "3.6"
+version: "3.8"
 services:
   postgres:
+    container_name: template_postgres
     image: postgres:12
     restart: always
-    volumes:
-      - db_data:/var/lib/postgresql/data
     environment:
-      POSTGRES_PASSWORD: "$PG_PASSWORD"
+      POSTGRES_PASSWORD: "${PG_PASSWORD}"
     ports:
       - "5432:5432"
   graphql-engine:
-    image: hasura/graphql-engine:v2.20.0
+    container_name: template__graphql_engine
+    image: hasura/graphql-engine:v2.21.0
     ports:
       - "8080:8080"
     depends_on:
@@ -18,19 +18,13 @@ services:
     restart: always
     environment:
       ## postgres database to store Hasura metadata
-      HASURA_GRAPHQL_METADATA_DATABASE_URL: "$PG_DATABASE"
-      ## this env var can be used to add the above postgres database to Hasura as a data source. this can be removed/updated based on your needs
-      PG_DATABASE_URL: "$PG_DATABASE"
-      ## enable the console served by server
-      HASURA_GRAPHQL_ENABLE_CONSOLE: "true" # set to "false" to disable console
-      ## enable debugging mode. It is recommended to disable this in production
+      HASURA_GRAPHQL_METADATA_DATABASE_URL: "${HASURA_GRAPHQL_DATABASE_URL}"
+      PG_DATABASE_URL: "${HASURA_GRAPHQL_DATABASE_URL}"
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "false" # set to "false" to disable console
       HASURA_GRAPHQL_DEV_MODE: "true"
       HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
-      ## uncomment next line to run console offline (i.e load console assets from server instead of CDN)
       HASURA_GRAPHQL_CONSOLE_ASSETS_DIR: /srv/console-assets
-      ## uncomment next line to set an admin secret
-      HASURA_GRAPHQL_ADMIN_SECRET: "$HASURA_GRAPHQL_ADMIN_SECRET"
-      ## use cloudflared or ngrok to expose your local server to the internet over HTTPS
-      WEBHOOK_BASE_URL: "$WEBHOOK_BASE_URL"
-volumes:
-  db_data:
+      HASURA_GRAPHQL_ADMIN_SECRET: "${HASURA_GRAPHQL_ADMIN_SECRET}"
+      HASURA_GRAPHQL_ACTIONS_BASE_URL: "${HASURA_GRAPHQL_ACTIONS_BASE_URL}"
+      HASURA_GRAPHQL_DEFAULT_NAMING_CONVENTION: "graphql-default"
+      HASURA_GRAPHQL_EXPERIMENTAL_FEATURES: "naming_convention"

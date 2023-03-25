@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home page renders correctly 1`] = `
+<div>
+  <div
+    class="css-0"
+  >
+    <div
+      class="chakra-stack css-wlujae"
+    >
+      <div
+        class="chakra-stack css-87qygf"
+      >
+        <h2
+          aria-label="heading"
+          class="chakra-heading css-1dklj6k"
+        >
+          Hajimemashite 👋🏽!
+        </h2>
+      </div>
+      <div
+        class="chakra-stack css-ojjdrs"
+      >
+        <h2
+          aria-label="heading"
+          class="chakra-heading css-18j379d"
+        >
+          Characters
+        </h2>
+        <div
+          class="chakra-stack css-ojjdrs"
+        >
+          <p
+            class="chakra-text css-0"
+          >
+            No users found
+          </p>
+          <div
+            class="css-15pd5yp"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <span
+    hidden=""
+    id="__chakra_env"
+  />
+</div>
+`;

@@ -1,13 +1,9 @@
-input UserRegisterInput {
-  name: String!
-  email: String!
-  password: String!
-}
-
-mutation MyMutation($user: UserRegisterInput!) {
-  register(user: $user) {
-    email
+mutation CreateUser($email: String!, $name: String!, $password: String!) {
+  insertUsersOne(object: { email: $email, name: $name, password: $password }) {
+    id
     name
-    password
+    email
+    updatedAt
+    createdAt
   }
 }
