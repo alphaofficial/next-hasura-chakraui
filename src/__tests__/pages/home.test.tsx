@@ -1,4 +1,4 @@
-import { render } from "@/client/test-utils";
+import { render, waitFor } from "@/client/test-utils";
 import Home from "@/pages/index";
 
 const renderPage = () => render(<Home />);
@@ -8,13 +8,13 @@ describe("Home page", () => {
     return {
       __esModule: true,
       ...originalModule,
-      useQuery: jest.fn(),
       useCharactersByVillageQuery: jest.fn(),
     };
   });
 
-  it("renders correctly", () => {
+  it("renders correctly", async () => {
     const { container } = renderPage();
-    expect(container).toMatchSnapshot();
+    const node = await waitFor(() => container);
+    expect(node).toMatchSnapshot();
   });
 });
