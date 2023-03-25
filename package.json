@@ -69,6 +69,7 @@
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
     "@types/bcrypt": "^5.0.0",
+    "@types/cookie": "^0.5.1",
     "@types/js-cookie": "^3.0.3",
     "@types/pg": "^8.6.6",
     "autoprefixer": "^10.4.13",
