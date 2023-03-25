@@ -52,6 +52,10 @@ npm install
 
 ### Local development
 
+```bash
+docker-compose up -d
+```
+
 This will start the docker container for hasura engine and postgres
 
 Create a .env file
@@ -61,10 +65,6 @@ cp .env.example .env
 ```
 
 Populate the .env file with your environment variables
-
-```bash
-docker-compose up -d
-```
 
 Start the application
 
