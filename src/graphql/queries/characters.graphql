@@ -1,0 +1,27 @@
+query CharactersByVillage($village: [String!]) {
+  characters(filter: { village: $village }) {
+    info {
+      count
+      pages
+      next
+      prev
+    }
+    results {
+      _id
+      name
+      avatarSrc
+      description
+      rank
+      village
+    }
+  }
+}
+
+query Character($id: String!) {
+  character(id: $id) {
+    name
+    avatarSrc
+    description
+    village
+  }
+}

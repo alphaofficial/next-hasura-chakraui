@@ -1,7 +1,28 @@
 query Users($limit: Int, $offset: Int) {
   users(limit: $limit, offset: $offset) {
     id
-    name
     email
+    name
+  }
+}
+
+query UserByEmail($email: String!) {
+  users(where: { email: { _eq: $email } }) {
+    email
+    id
+    createdAt
+    name
+    password
+    updatedAt
+  }
+}
+
+query UserById($id: Int!) {
+  usersByPk(id: 10) {
+    email
+    id
+    name
+    updatedAt
+    createdAt
   }
 }

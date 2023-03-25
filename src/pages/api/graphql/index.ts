@@ -1,10 +1,10 @@
-import validateRoute from "@/api-helpers/validate";
-import handler from "@/api-helpers/handler";
-import { graphqlHandler } from "@/api-handlers/graphql";
+import { graphqlHandler } from "@/serverless/functions/graphql";
+import Handler from "@/serverless/helpers/handler";
 
 /**
  * This is the handler for the /api/graphql
  */
-const gql = handler.post(validateRoute(graphqlHandler));
+const api = new Handler();
+const gql = api.handler.post(graphqlHandler);
 
 export default gql;

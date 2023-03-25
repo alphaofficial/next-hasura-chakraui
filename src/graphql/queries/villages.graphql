@@ -1,0 +1,15 @@
+query Villages {
+  villages {
+    results {
+      _id
+      name
+    }
+  }
+}
+
+query VillageById($id: String!) {
+  village(id: $id) {
+    _id
+    name
+  }
+}
