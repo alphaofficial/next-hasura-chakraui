@@ -32,10 +32,10 @@ export default function Home() {
 
   return (
     <PageLayout>
-      <Stack direction="column" p={8} gap={4}>
-        <Stack direction="column" gap={2}>
+      <Box p={8}>
+        <Box>
           <Heading aria-label="heading">Hajimemashite 👋🏽!</Heading>
-        </Stack>
+        </Box>
 
         <Stack direction="column" gap={4}>
           <Heading as="h2" size="md" aria-label="heading">
@@ -87,7 +87,7 @@ export default function Home() {
             </Grid>
           </Stack>
         </Stack>
-      </Stack>
+      </Box>
     </PageLayout>
   );
 }
