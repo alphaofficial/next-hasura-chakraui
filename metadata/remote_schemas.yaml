@@ -3,3 +3,8 @@
     url: https://narutoql.up.railway.app/graphql
     timeout_seconds: 60
     customization: {}
+- name: StarWars
+  definition:
+    url: https://swapi-graphql.netlify.app/.netlify/functions/index
+    timeout_seconds: 60
+    customization: {}
