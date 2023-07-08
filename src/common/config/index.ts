@@ -1,5 +1,10 @@
-const { JWT_SECRET, NODE_ENV, GRAPHQL_URL, GRAPHQL_ADMIN_SECRET } =
-  process.env as Record<string, string>;
+const {
+  JWT_SECRET,
+  NODE_ENV,
+  GRAPHQL_URL,
+  GRAPHQL_ADMIN_SECRET,
+  NEXT_PUBLIC_HASURA_GRAPHQL_PROXY,
+} = process.env as Record<string, string>;
 
 const baseConfig = {
   APP_NAME: "My App",
@@ -15,6 +20,7 @@ const baseConfig = {
     },
   },
   GRAPHQL_URL,
+  GRAPHQL_PROXY: NEXT_PUBLIC_HASURA_GRAPHQL_PROXY,
   GRAPHQL_ADMIN_SECRET,
 } as const;
 

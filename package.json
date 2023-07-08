@@ -27,8 +27,8 @@
     "migration:apply": "npx hasura migrate apply --database-name default"
   },
   "dependencies": {
-    "@auth0/nextjs-auth0": "^2.2.2",
     "@chakra-ui/react": "^2.5.1",
+    "@clerk/nextjs": "^4.21.14",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@fontsource/mulish": "^4.5.14",

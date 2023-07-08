@@ -10,22 +10,23 @@ import {
 } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ChakraProvider } from "@chakra-ui/react";
-import { UserProvider } from "@auth0/nextjs-auth0/client";
 import theme from "@/client/theme";
+import { ClerkProvider } from "@clerk/nextjs";
 
+const isDevelopment = process.env.NODE_ENV !== "production";
 export default function App({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={false} />
-      <Hydrate state={pageProps.dehydratedState}>
-        <UserProvider>
+    <ClerkProvider {...pageProps}>
+      <QueryClientProvider client={queryClient}>
+        {isDevelopment && <ReactQueryDevtools initialIsOpen={false} />}
+        <Hydrate state={pageProps.dehydratedState}>
           <ChakraProvider theme={theme}>
             <Component {...pageProps} />
           </ChakraProvider>
-        </UserProvider>
-      </Hydrate>
-    </QueryClientProvider>
+        </Hydrate>
+      </QueryClientProvider>
+    </ClerkProvider>
   );
 }
