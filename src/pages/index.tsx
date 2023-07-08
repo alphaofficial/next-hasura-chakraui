@@ -1,5 +1,8 @@
 import { dehydrate } from "@tanstack/react-query";
-import { useCharactersByVillageQuery } from "@/client/generated/graphql";
+import {
+  CharactersByVillageDocument,
+  useCharactersByVillageQuery,
+} from "@/client/generated/graphql";
 import { serialize } from "@/common/utils/serialize";
 import { client } from "@/client/lib/client";
 import PageLayout from "@/client/layout/page-layout";
@@ -13,23 +16,37 @@ import {
   Grid,
   GridItem,
 } from "@chakra-ui/react";
+import { graphQLClient } from "@/serverless/lib/client";
+import { CharactersByVillageQuery } from "@/serverless/generated/server-sdk";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 
-export async function getServerSideProps() {
+export const getServerSideProps: GetServerSideProps<{
+  data: CharactersByVillageQuery;
+  dehydratedState: unknown;
+}> = async () => {
   await client.prefetchQuery(
     useCharactersByVillageQuery.getKey({ village: "leaf" }),
     useCharactersByVillageQuery.fetcher({ village: "leaf" })
   );
 
+  const data = await graphQLClient.request<CharactersByVillageQuery>(
+    CharactersByVillageDocument,
+    {
+      village: "leaf",
+    }
+  );
+
   return {
     props: {
+      data,
       dehydratedState: serialize(dehydrate(client)),
     },
   };
-}
+};
 
-export default function Home() {
-  const { data } = useCharactersByVillageQuery({ village: "leaf" });
-
+export default function Home({
+  data,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <PageLayout>
       <Box p={8}>
