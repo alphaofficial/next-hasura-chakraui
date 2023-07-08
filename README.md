@@ -1,7 +1,8 @@
-# Next JS with Hasura GraphQL + React Query template
+<img src="bg.jpg" />
 
-This is a template for Next.js + ChakraUI + Hasura GraphQL + React Query + TypeScript.
-It supports SSR via React Query Hydrate.
+# Next JS, Hasura GraphQL, React Query template
+
+A fullstack template with Next.js, Hasura GraphQL, React Query, Chakra UI.
 
 ## Getting Started
 
