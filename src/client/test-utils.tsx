@@ -8,8 +8,11 @@ import {
   QueryClientProvider,
 } from "@tanstack/react-query";
 import { ChakraProvider } from "@chakra-ui/react";
-import { UserProvider } from "@auth0/nextjs-auth0/client";
+import { ClerkProvider } from "@clerk/clerk-react";
+import { mock } from "jest-mock-extended";
+import { AppProps } from "next/app";
 
+const { pageProps: pagePropsMock } = mock<AppProps>();
 const user = userEvent.setup();
 const queryClient = new QueryClient();
 const AllTheProviders: React.FC<{ children: React.ReactNode }> = ({
@@ -18,9 +21,7 @@ const AllTheProviders: React.FC<{ children: React.ReactNode }> = ({
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={{}}>
-        <UserProvider>
-          <ChakraProvider>{children}</ChakraProvider>
-        </UserProvider>
+        <ChakraProvider>{children}</ChakraProvider>
       </Hydrate>
     </QueryClientProvider>
   );
